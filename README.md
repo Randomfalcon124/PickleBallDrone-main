@@ -8,3 +8,20 @@ In order to test the whole workflow, I have built a small holonomic robotic driv
 
 I am making this project because I am bad at pickleball, and I want to get better. However, to get better, I need to practice, but there isn't always someone to practice with. This drone (UAV) is meant to solve this problem.
 
+Key Files:
+
+Arduino Sketch (arduinoDrivebaseControlSketch.ino)
+Handles low-level motor control. It receives motion commands over serial and directly drives the robot hardware. Currently assumes that the robot has a fixed heading and takes desired movement direction and power as input.
+
+Depth Pipeline (currentDepthDetectionPipeline.py)
+Processes RGB-D camera data to detect objects and estimate their 3D position. This is the source of all spatial information used by the robot. Currently uses a recorded video to demonstrate functionality.
+
+Trajectory (trajectory.py)
+Takes the detected 3D positions and converts them into motion targets for the robot (where to go and how to move). Currently uses points received from real-world testing to demonstrate functionality.
+
+InstaRun (instaRun.py)
+Currently demonstrates the localization and movement of the drivebase as well as the remote control using a terminal on a laptop connecting via SSH. Will eventually orchestrate the system by running the depth pipeline, passing results to the trajectory module, and sending the final drive commands to the Arduino based on its localization. 
+
+How They Will Work Together
+
+The depth pipeline provides object positions → the trajectory module decides the robot’s motion → InstaRun sends commands → the Arduino executes them on the hardware.
