@@ -14,7 +14,7 @@ Arduino Sketch (arduinoDrivebaseControlSketch.ino)
 Handles low-level motor control. It receives motion commands over serial and directly drives the robot hardware. Currently assumes that the robot has a fixed heading and takes desired movement direction and power as input.
 
 Depth Pipeline (currentDepthDetectionPipeline.py)
-Processes RGB-D camera data to detect objects and estimate their 3D position. This is the source of all spatial information used by the robot. Currently uses a recorded video to demonstrate functionality.
+Processes RGB-D camera data to detect objects and estimate their 3D position. This is the source of all ball position information used by the robot. Currently uses a recorded video to demonstrate functionality.
 
 Trajectory (trajectory.py)
 Takes the detected 3D positions and converts them into motion targets for the robot (where to go and how to move). Currently uses points received from real-world testing to demonstrate functionality.
